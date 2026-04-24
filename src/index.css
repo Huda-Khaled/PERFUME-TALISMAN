@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* font base */
+body{
+  font-family: "Almarai", sans-serif;
+    font-style: normal;
+}
+
+/* typography */
+.title-lg{
+  font-weight:700;
+  font-size:14px;
+  line-height:20px;
+  color:#164863;
+}
+
+.title-md{
+  font-weight:700;
+  font-size:18px;
+  line-height:21.6px;
+  color:#231f1e;
+}
+
+.text-primary{
+  font-weight:400;
+  font-size:16px;
+  line-height:24px;
+  color:#164863;
+}
+
+.text-secondary{
+  font-weight:400;
+  font-size:16.8px;
+  line-height:20px;
+  color:#164863;
+}
+
+.text-small{
+  font-weight:400;
+  font-size:15px;
+  line-height:26px;
+  color:#111827;
+}
+
+.text-caption{
+  font-weight:400;
+  font-size:15px;
+  line-height:18px;
+  color:#1D4E68;
+}
+
+.text-error{
+  font-weight:700;
+  line-height:28px;
+  color:#e43426;
+}
+
+.title-xl{
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 40px;
+  color: #164863;
+  font-style: normal;
+}
+
+.icon{
+  background-color:#F87171;
+}
