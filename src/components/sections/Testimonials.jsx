@@ -62,6 +62,7 @@ function Avatar() {
         viewBox="0 0 24 24"
         className="w-8 h-8 text-[#164863]"
         fill="currentColor"
+        aria-hidden="true"
       >
         <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
       </svg>
@@ -72,7 +73,6 @@ function Avatar() {
 export default function Testimonials() {
   const [current, setCurrent] = useState(0);
 
-  // موبايل: 1 في وقت، ديسكتوب: 3 في وقت
   const [perView, setPerView] = useState(3);
 
   useEffect(() => {
@@ -112,7 +112,6 @@ export default function Testimonials() {
             key={t.id}
             className="bg-white rounded-xl p-6 border border-gray-100 shadow-sm flex flex-col justify-between gap-4"
           >
-            {/* علامة الاقتباس */}
             <div>
               <span className="text-4xl text-gray-200 font-serif leading-none">
                 "
@@ -122,7 +121,6 @@ export default function Testimonials() {
               </p>
             </div>
 
-            {/* الاسم + الأفاتار + النجوم */}
             <div className="flex items-center justify-between pt-3 border-t border-gray-100">
               <div className="text-right">
                 <p className="text-gray-800 text-sm font-semibold">{t.name}</p>
@@ -140,10 +138,15 @@ export default function Testimonials() {
           <button
             key={i}
             onClick={() => setCurrent(i)}
-            className={`h-2 rounded-full transition-all duration-300 ${
-              i === current ? "w-6 bg-[#164863]" : "w-2 bg-gray-300"
-            }`}
-          />
+            aria-label={`انتقل إلى التقييم ${i + 1}`}
+            className="p-3 flex items-center justify-center"
+          >
+            <span
+              className={`h-2 rounded-full transition-all duration-300 block ${
+                i === current ? "w-6 bg-[#164863]" : "w-2 bg-gray-300"
+              }`}
+            />
+          </button>
         ))}
       </div>
     </section>

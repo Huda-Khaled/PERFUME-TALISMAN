@@ -1,6 +1,6 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import logo from "../../assets/logo.PNG";
-import sbcs from "../../assets/sbc.png";
+import logo from "../../assets/logo.webp";
+import sbcs from "../../assets/sbc.webp";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { FaWhatsapp } from "react-icons/fa6";
 import { PiTiktokLogo } from "react-icons/pi";
@@ -10,16 +10,13 @@ import { FaInstagram } from "react-icons/fa6";
 import visa from "../../assets/visa.svg";
 import stcPay from "../../assets/stc.svg";
 import creditcard from "../../assets/creditcard.svg";
-import { WHATSAPP_URL } from "../../constants/contact";
-
-const handlePrivacy = (e) => {
-  e.preventDefault();
-  setTimeout(() => {
-    document
-      .getElementById("privacy-policy")
-      ?.scrollIntoView({ behavior: "smooth" });
-  }, 100);
-};
+import {
+  MAILTO_URL,
+  PHONE_TEL_URL,
+  WHATSAPP_URL,
+} from "../../constants/contact";
+import { POLICY_LINKS } from "../../constants/policyLinks";
+import { SITE_NAME } from "../../constants/brand";
 
 export default function Footer() {
   const navigate = useNavigate();
@@ -42,7 +39,6 @@ export default function Footer() {
 
   return (
     <>
-      {/* ✅ CLS fix: contain layout + minHeight */}
       <div
         className="bg-brand h-14"
         style={{
@@ -57,42 +53,36 @@ export default function Footer() {
           <div>
             <h3 className="font-bold text-base mb-4">روابط مهمة</h3>
             <ul className="flex flex-col gap-2.5 text-sm text-white">
-              <li>
-                <button
-                  type="button"
-                  onClick={() => scrollToHomeSection("return-policy")}
-                  className="hover:text-white transition-colors text-right w-full"
-                >
-                  سياسة الاسترجاع والاستبدال
-                </button>
-              </li>
+              {POLICY_LINKS.map((link) => (
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
+                    className="hover:text-brand-light transition-colors text-right block"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
               <li>
                 <button
                   type="button"
                   onClick={() => scrollToHomeSection("our-services")}
-                  className="hover:text-white transition-colors text-right w-full"
+                  className="hover:text-brand-light transition-colors text-right w-full"
                 >
                   من نحن
                 </button>
-              </li>
-              {/* ✅ link فاضي اتملى */}
-              <li>
-                <a
-                  href="/#privacy-policy"
-                  onClick={handlePrivacy}
-                  className="hover:text-white transition-colors"
-                >
-                 
-                </a>
               </li>
             </ul>
           </div>
 
           <div className="text-center">
+            {/* ✅ width + height مضافين */}
             <img
               src={logo}
               className="mx-auto mb-2 w-28"
-              alt="شعار بيرفيوم طلسمان"
+              alt={`شعار ${SITE_NAME}`}
+              width="112"
+              height="112"
             />
             <p className="text-sm text-white leading-relaxed mb-4">
               نمزج بين الأناقة والتميز لتخلق لك تجربة عطرية فريدة، حيث كل نفحة
@@ -107,10 +97,13 @@ export default function Footer() {
           </div>
 
           <div className="text-center">
+            {/* ✅ width + height مضافين */}
             <img
               src={sbcs}
               className="w-20 mx-auto mb-2"
               alt="منصة الأعمال السعودية"
+              width="80"
+              height="80"
             />
             <p className="text-sm text-white">موثق لدى منصة الأعمال</p>
           </div>
@@ -118,9 +111,8 @@ export default function Footer() {
 
         <div className="border-t-2 border-white/40 border-dotted mt-10 py-6 text-center">
           <div className="flex justify-center gap-3 flex-wrap mb-4">
-            {/* ✅ aria-label على كل contact link */}
             <a
-              href="mailto:info@sadl.sa"
+              href={MAILTO_URL}
               aria-label="راسلنا على البريد الإلكتروني"
               className="flex items-center gap-2 border border-white text-white text-sm px-5 py-2 hover:bg-white/10 transition"
             >
@@ -128,7 +120,7 @@ export default function Footer() {
               البريد الإلكتروني
             </a>
             <a
-              href="tel:+966XXXXXXXXX"
+              href={PHONE_TEL_URL}
               aria-label="اتصل بنا على الجوال"
               className="flex items-center gap-2 border border-white text-white text-sm px-5 py-2 hover:bg-white/10 transition"
             >
@@ -147,7 +139,6 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* ✅ aria-label على Social icons */}
           <div className="flex justify-center gap-4 text-white">
             <a
               href="#"
@@ -175,12 +166,25 @@ export default function Footer() {
 
         <div className="border-t-2 border-t-white/40 border-dotted py-5 flex flex-wrap items-center justify-between gap-3">
           <p className="text-white text-xs">
-            الحقوق محفوظة | PERFUME TALISMAN 2026
+            الحقوق محفوظة | {SITE_NAME} 2026
           </p>
           <div className="flex gap-2 flex-wrap items-center">
-            <img src={creditcard} className="h-6" alt="مدى" />
-            <img src={visa} className="h-6" alt="Visa" />
-            <img src={stcPay} className="h-6" alt="STC Pay" />
+            {/* ✅ width + height مضافين على الـ icons */}
+            <img
+              src={creditcard}
+              className="h-6"
+              alt="مدى"
+              width="24"
+              height="24"
+            />
+            <img src={visa} className="h-6" alt="Visa" width="24" height="24" />
+            <img
+              src={stcPay}
+              className="h-6"
+              alt="STC Pay"
+              width="24"
+              height="24"
+            />
           </div>
         </div>
       </footer>

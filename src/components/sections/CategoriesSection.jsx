@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import catPerfumes from "../../assets/Perfumes.jpeg";
-import catPackages from "../../assets/Packages.jpeg";
+import catPerfumes from "../../assets/Perfumes.webp";
+import catPackages from "../../assets/Packages.webp";
 
 const categories = [
   { id: 1, title: "جميع العطور", image: catPerfumes, path: "/products" },
@@ -31,6 +31,8 @@ export default function CategoriesSection() {
               <img
                 src={cat.image}
                 alt={cat.title}
+                width={400}
+                height={300}
                 className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
               />
 

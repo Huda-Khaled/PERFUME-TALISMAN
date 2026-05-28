@@ -13,6 +13,8 @@ export default function Hero() {
       <img
         src={img}
         alt="hero"
+        width={1920}
+        height={700}
         className="w-full h-full object-cover object-center"
         loading="eager"
         fetchPriority="high"
@@ -24,9 +26,9 @@ export default function Hero() {
 
       {/* النص والزرار */}
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 text-center px-4">
-        <p className="text-white text-lg md:text-base max-w-md">
+        <h1 className="text-white text-lg md:text-base max-w-md">
           تشكيلة فاخرة من أرقى العطور العالمية
-        </p>
+        </h1>
         <a
           href="#categories-section"
           onClick={scrollToCategories}

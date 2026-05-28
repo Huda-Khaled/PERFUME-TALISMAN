@@ -2,9 +2,11 @@ import { useState } from "react";
 import { FiMenu, FiX, FiSearch } from "react-icons/fi";
 import { FiUser } from "react-icons/fi";
 import { BsCart3 } from "react-icons/bs";
-import logo from "../../assets/logo.PNG";
+import logo from "../../assets/logo.webp";
 import useCartStore from "../../store/cartStore";
 import { useNavigate, Link, useLocation } from "react-router-dom";
+import { POLICY_LINKS } from "../../constants/policyLinks";
+import { SITE_NAME } from "../../constants/brand";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -17,7 +19,7 @@ const Navbar = () => {
     { label: "جميع العطور", path: "/Products" },
     { label: "البكجات", path: "/PackagePage" },
     { label: "آراء العملاء", path: "/", sectionId: "testimonials" },
-    { label: "سياسة الاسترجاع", path: "/", sectionId: "return-policy" },
+    ...POLICY_LINKS,
   ];
 
   const handleNavClick = (link) => {
@@ -45,17 +47,24 @@ const Navbar = () => {
     <>
       <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 flex items-center justify-between gap-4 px-3 h-[70px]">
         <div className="flex items-center gap-0">
-          {/* MENU */}
+          {/* ✅ aria-label مضاف */}
           <button
             className="md:hidden w-10 h-10 rounded-xl flex items-center justify-center text-black hover:bg-gray-100 transition-all duration-200"
             onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? "إغلاق القائمة" : "فتح القائمة"}
           >
             {menuOpen ? <FiX size={30} /> : <FiMenu size={30} />}
           </button>
 
-          {/* LOGO */}
+          {/* ✅ width + height مضافين على الـ logo */}
           <Link to="/" className="flex items-center">
-            <img src={logo} alt="logo" className="w-28 h-28 object-contain" />
+            <img
+              src={logo}
+              alt={`شعار ${SITE_NAME}`}
+              className="w-28 h-28 object-contain"
+              width="112"
+              height="112"
+            />
           </Link>
         </div>
 
@@ -76,21 +85,31 @@ const Navbar = () => {
 
         {/* ICONS */}
         <div className="flex items-center gap-1 flex-shrink-0">
-          <button className="w-10 h-10 rounded-xl flex items-center justify-center text-black hover:bg-gray-100 transition-all duration-200">
+          {/* ✅ aria-label مضاف */}
+          <button
+            className="w-10 h-10 rounded-xl flex items-center justify-center text-black hover:bg-gray-100 transition-all duration-200"
+            aria-label="بحث"
+          >
             <FiSearch size={20} />
           </button>
 
-          <button className="w-10 h-10 rounded-xl flex items-center justify-center text-black hover:bg-gray-100 transition-all duration-200">
+          {/* ✅ aria-label مضاف */}
+          <button
+            className="w-10 h-10 rounded-xl flex items-center justify-center text-black hover:bg-gray-100 transition-all duration-200"
+            aria-label="حسابي"
+          >
             <FiUser size={22} />
           </button>
 
+          {/* ✅ aria-label مضاف */}
           <button
             onClick={() => navigate("/cart")}
             className="relative w-10 h-10 rounded-xl flex items-center justify-center text-black hover:bg-gray-100 transition-all duration-200"
+            aria-label={`سلة التسوق${totalItems > 0 ? ` - ${totalItems} منتج` : ""}`}
           >
             <BsCart3 size={20} />
             {totalItems > 0 && (
-             <span className="absolute top-0 right-0 min-w-[18px] h-[18px] px-1 icon rounded-full text-white text-[10px] font-bold flex items-center justify-center">
+              <span className="absolute top-0 right-0 min-w-[18px] h-[18px] px-1 icon rounded-full text-white text-[10px] font-bold flex items-center justify-center">
                 {totalItems}
               </span>
             )}
@@ -113,7 +132,12 @@ const Navbar = () => {
         }`}
       >
         <div className="flex flex-col p-6 gap-2">
-          <button className="self-end mb-4" onClick={() => setMenuOpen(false)}>
+          {/* ✅ aria-label مضاف */}
+          <button
+            className="self-end mb-4"
+            onClick={() => setMenuOpen(false)}
+            aria-label="إغلاق القائمة"
+          >
             <FiX size={24} />
           </button>
 

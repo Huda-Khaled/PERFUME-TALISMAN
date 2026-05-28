@@ -24,7 +24,7 @@ export default function FeaturedPerfumes() {
         <div className="mx-auto mt-3 bg-brand-light w-[100px] h-[3px]" />
       </div>
 
-      <div className="relative mx-auto min-h-[260px] max-w-7xl">
+      <div className="relative mx-auto min-h-[420px] max-w-7xl">
         {isLoading && <Pageloader variant="inline" />}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mx-auto">
           {!isLoading &&
@@ -38,7 +38,7 @@ export default function FeaturedPerfumes() {
                   description: pkg.description,
                   price: pkg.price,
                   in_stock: pkg.in_stock,
-                  item_type: "package", // مهم للـ QuickView
+                  item_type: "package",
                 }}
               />
             ))}
@@ -47,7 +47,7 @@ export default function FeaturedPerfumes() {
 
       <div className="flex justify-center mt-10">
         <Link
-          to="/PackagePage" // صح زي ما هو
+          to="/PackagePage"
           className="border border-brand text-brand hover:bg-brand hover:text-white text-sm px-8 py-3"
         >
           عرض الكل
