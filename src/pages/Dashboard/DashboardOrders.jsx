@@ -135,9 +135,9 @@ export default function DashboardOrders() {
                       </p>
                       <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-slate-600">
                         <span>هاتف: {o.phone}</span>
-                        <span>
-                          {o.region} — {o.street} — {o.house}
-                        </span>
+                        <span>المنطقة: {o.region}</span>
+                        <span>الشارع: {o.street}</span>
+                        <span>المنزل: {o.house}</span>
                       </div>
                     </div>
                     <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">

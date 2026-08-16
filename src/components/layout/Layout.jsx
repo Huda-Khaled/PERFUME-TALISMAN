@@ -4,12 +4,10 @@ import Navbar from "../Navbar/Navba";
 import AnnouncementBar from "../AnnouncementBar/AnnouncementBar";
 import Footer from "../Footer/Footer";
 import FloatingButtons from "../Floatingbuttons/Floatingbuttons";
+import WelcomeNoticeModal from "../WelcomeNotice/WelcomeNoticeModal";
 import Pageloader from "../Pageloader/Pageloader";
-// import Cursor from "../Cursor/Cursor";
 export default function Layout() {
   // const location = useLocation();
-  // // const isDashboard = location.pathname.startsWith("/dashboard");
-
   // if (isDashboard) return <Outlet />;
 
   return (
@@ -25,6 +23,7 @@ export default function Layout() {
       </main>
       <Footer />
       <FloatingButtons />
+      <WelcomeNoticeModal />
     </>
   );
 }
